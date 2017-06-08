@@ -1,0 +1,30 @@
+{
+  "name": "speike-cli",
+  "version": "1.0.0",
+  "description": "Simple CLI for scaffolding Speike projects",
+  "bin": {
+    "speike": "bin/speike"
+  },
+  "main": "bin/speike",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haotech/speike-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "speike"
+  ],
+  "author": "Berwin <liubowen.niubi@gmail.com> (https://github.com/berwin)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haotech/speike-cli/issues"
+  },
+  "homepage": "https://github.com/haotech/speike-cli#readme",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0"
+  }
+}

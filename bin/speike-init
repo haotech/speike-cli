@@ -1,0 +1,66 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const chalk = require('chalk')
+const download = require('download-git-repo')
+const fs = require('fs')
+const path = require('path')
+
+/**
+ * Usage.
+ */
+
+program
+  .usage('<template-name> [project-name]')
+  .option('-c, --clone', 'use git clone')
+  .parse(process.argv)
+
+/**
+ * Help.
+ */
+
+program.on('--help', function () {
+  console.log('  Examples:')
+  console.log()
+  console.log(chalk.gray('    # create a new project with an official template'))
+  console.log('    $ speike init template my-project')
+  console.log()
+  console.log(chalk.gray('    # create a new project straight from a github template'))
+  console.log('    $ speike init username/repo my-project')
+  console.log()
+})
+
+if (program.args.length < 1) return program.help()
+
+/**
+ * Start.
+ */
+
+const template = program.args[0]
+const rawName = program.args[1]
+const isHere = !rawName || rawName === '.'
+const name = isHere ? path.relative('../', process.cwd()) : rawName
+const targetPath = path.join(process.cwd(), rawName || '.')
+const clone = program.clone || false
+
+console.log({
+  template, rawName, isHere, name, targetPath
+})
+
+downloadAndGenerate(`haotech/${template}`)
+
+function downloadAndGenerate(template) {
+  const spinner = ora('downloading template')
+  spinner.start()
+
+  fs.access(targetPath, (err) => {
+    if (!err) {
+      // 删除文件夹
+    }
+    download(template, targetPath, {close}, err => {
+      spinner.stop();
+      if (err) return console.error(err);
+      console.log('Generated %s', template);
+    });
+  });
+}
