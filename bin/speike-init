@@ -2,9 +2,10 @@
 
 const program = require('commander')
 const chalk = require('chalk')
-const download = require('download-git-repo')
-const fs = require('fs')
+const inquirer = require('inquirer')
 const path = require('path')
+const utils = require('../lib/utils.js')
+const SpeikeInit = require('../lib/init.js')
 
 /**
  * Usage.
@@ -42,25 +43,20 @@ const isHere = !rawName || rawName === '.'
 const name = isHere ? path.relative('../', process.cwd()) : rawName
 const targetPath = path.join(process.cwd(), rawName || '.')
 const clone = program.clone || false
+const init = new SpeikeInit({template, name, targetPath, clone})
 
-console.log({
-  template, rawName, isHere, name, targetPath
-})
-
-downloadAndGenerate(`haotech/${template}`)
-
-function downloadAndGenerate(template) {
-  const spinner = ora('downloading template')
-  spinner.start()
-
-  fs.access(targetPath, (err) => {
-    if (!err) {
-      // 删除文件夹
+if (utils.isExist(targetPath)) {
+  inquirer.prompt([{
+    type: 'confirm',
+    message: isHere
+      ? 'Generate project in current directory?'
+      : 'Target directory exists. Continue?',
+    name: 'ok'
+  }]).then(function (answers) {
+    if (answers.ok) {
+      init.run()
     }
-    download(template, targetPath, {close}, err => {
-      spinner.stop();
-      if (err) return console.error(err);
-      console.log('Generated %s', template);
-    });
-  });
+  })
+} else {
+  init.run()
 }
