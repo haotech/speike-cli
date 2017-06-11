@@ -6,6 +6,7 @@ const inquirer = require('inquirer')
 const path = require('path')
 const utils = require('../lib/utils.js')
 const SpeikeInit = require('../lib/init.js')
+const os = require('os')
 
 /**
  * Usage.
@@ -41,9 +42,10 @@ const template = program.args[0]
 const rawName = program.args[1]
 const isHere = !rawName || rawName === '.'
 const name = isHere ? path.relative('../', process.cwd()) : rawName
+const cacheTemplatePath = path.join(os.homedir(), '.speike-templates', template.replace(/\//g, '-'))
 const targetPath = path.join(process.cwd(), rawName || '.')
 const clone = program.clone || false
-const init = new SpeikeInit({template, name, targetPath, clone})
+const init = new SpeikeInit({template, name, cacheTemplatePath, targetPath, clone})
 
 if (utils.isExist(targetPath)) {
   inquirer.prompt([{
