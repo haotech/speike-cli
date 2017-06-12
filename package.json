@@ -7,7 +7,7 @@
   },
   "main": "bin/speike",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard && nyc ava test/index.js"
   },
   "repository": {
     "type": "git",
@@ -33,5 +33,11 @@
     "metalsmith": "^2.3.0",
     "ora": "^1.2.0",
     "urllib": "^2.22.0"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "coveralls": "^2.13.1",
+    "nyc": "^11.0.2",
+    "standard": "^10.0.2"
   }
 }

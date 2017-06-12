@@ -33,7 +33,7 @@ urllib.request('https://api.github.com/orgs/haotech/repos', (err, data, res) => 
       .filter(item => /^(speike-template-)/.test(item.name))
       .forEach(item => {
         console.log(
-          '  ' + chalk.yellow('♧') +
+          '  ' + '🐶' +
           '  ' + chalk.cyan(item.name) +
           ' - ' + item.description)
       })
