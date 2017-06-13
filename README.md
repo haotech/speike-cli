@@ -1,4 +1,8 @@
 # speike-cli
+[![npm](https://img.shields.io/npm/v/speike.svg)](https://www.npmjs.com/package/speike)
+[![Build Status](https://travis-ci.org/haotech/speike-cli.svg?branch=master)](https://travis-ci.org/haotech/speike-cli)
+[![Coverage Status](https://coveralls.io/repos/github/haotech/speike-cli/badge.svg?branch=master)](https://coveralls.io/github/haotech/speike-cli?branch=master)
+
 简单且通用的脚手架工具
 
 ### 安装
@@ -67,7 +71,7 @@ $ speike init owner/name#my-branch
 
 metadata 文件中的 `prompts` 字段必须是一个 `Object` 包含了用户提示信息，`prompts` 中的每个key会对应生成一个变量，可以在 `template` 文件夹内的模板中使用，就像 ejs, jade, nunjucks 中传入模板中的变量一样（事实上就是使用模板引擎来实现的），而每个key对应的 `value` 是一个 [Inquirer.js question object](https://github.com/SBoudrias/Inquirer.js/#question)，例如：
 
-```base
+```json
 {
   "prompts": {
     "name": {
@@ -87,9 +91,9 @@ metadata 文件中的 `prompts` 字段必须是一个 `Object` 包含了用户�
 
 question object 是一个`hash`，包含了一些与问题相关的值
 
-- **type**：（String） 提示类型。默认为 `input`，可用类型：`input`， `confirm`， `rawlist`， `expand`， `checkbox`， `password`， `editor`
-- **message**：（String）在命令行中显示的问题
-- **default**：（String|Number|Array）问题的默认值
-- **choices**：（Array）值可以是`string`，也可以是`Object`，`Object` 包含`name`，`value`，`short`，`name` 是显示在终端列表中的名字，`value`是保存在`hash`中的值， `short`是选择后显示的值。
+- **type**: (String) 提示类型。默认为 `input`，可用类型：`input`， `confirm`， `rawlist`， `expand`， `checkbox`， `password`， `editor`
+- **message**: (String) 在命令行中显示的问题
+- **default**: (String|Number|Array) 问题的默认值
+- **choices**: (Array) 值可以是`string`，也可以是`Object`，`Object` 包含`name`，`value`，`short`，`name` 是显示在终端列表中的名字，`value`是保存在`hash`中的值， `short`是选择后显示的值。
 
 更多信息请查看 [Inquirer.js](https://github.com/SBoudrias/Inquirer.js/) 中的详细说明~
