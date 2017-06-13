@@ -5,19 +5,19 @@
 
 条件：[Node.js](https://nodejs.org/en/) >= 6.x 
 
-```
+```base
 $ npm install -g speike
 ```
 
 ### 使用
 
-```
+```base
 $ speike init <template-name> <project-name>
 ```
 
 例子：
 
-```
+```base
 $ speike init speike-template-haotech hao-project
 ```
 
@@ -37,7 +37,7 @@ speike 提供了一些常用的，并且比较推荐的模板，这些模板目�
 
 当编写好自定义的模板之后，可以通过下面的命令来使用该模板。
 
-```
+```base
 $ speike init username/repo my-project
 ```
 
@@ -45,7 +45,7 @@ $ speike init username/repo my-project
 
 例如拉取模板的指定分支：
 
-```
+```base
 $ speike init owner/name#my-branch
 ```
 
@@ -67,7 +67,7 @@ $ speike init owner/name#my-branch
 
 metadata 文件中的 `prompts` 字段必须是一个 `Object` 包含了用户提示信息，`prompts` 中的每个key会对应生成一个变量，可以在 `template` 文件夹内的模板中使用，就像 ejs, jade, nunjucks 中传入模板中的变量一样（事实上就是使用模板引擎来实现的），而每个key对应的 `value` 是一个 [Inquirer.js question object](https://github.com/SBoudrias/Inquirer.js/#question)，例如：
 
-```
+```base
 {
   "prompts": {
     "name": {
