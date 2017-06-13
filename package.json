@@ -1,5 +1,5 @@
 {
-  "name": "speike-cli",
+  "name": "speike",
   "version": "1.0.0",
   "description": "Simple CLI for scaffolding Speike projects",
   "bin": {
