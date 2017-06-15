@@ -22,10 +22,10 @@ $ speike init <template-name> <project-name>
 例子：
 
 ```base
-$ speike init speike-template-haotech hao-project
+$ speike init speike-template-thinkjs hao-project
 ```
 
-上面的例子首先会从 [haotech/speike-template-haotech](https://github.com/haotech/speike-template-haotech) 拉取模板，然后根据模板项目中根目录下 [metadata.js](https://github.com/haotech/speike-template-haotech/blob/master/metadata.js) 文件中 `prompts` 的配置使用 [交互命令](https://github.com/SBoudrias/Inquirer.js) 获取一些信息，最后通过这些获取到的信息生成 `hao-project` 项目。
+上面的例子首先会从 [haotech/speike-template-thinkjs](https://github.com/haotech/speike-template-thinkjs) 拉取模板，然后根据模板项目中根目录下 [metadata.js](https://github.com/haotech/speike-template-thinkjs/blob/master/metadata.js) 文件中 `prompts` 的配置使用 [交互命令](https://github.com/SBoudrias/Inquirer.js) 获取一些信息，最后通过这些获取到的信息生成 `hao-project` 项目。
 
 ### 推荐模板
 
@@ -33,7 +33,7 @@ speike 提供了一些常用的，并且比较推荐的模板，这些模板目�
 
 推荐模板：
 
-- [speike-template-haotech](https://github.com/haotech/speike-template-haotech) 功能齐全的前后端分离项目，该项目使用 Thinkjs 3.x + Vue + Vuex 架构。
+- [speike-template-thinkjs](https://github.com/haotech/speike-template-thinkjs) 功能齐全的前后端分离项目，该项目使用 Thinkjs 3.x + Vue + Vuex 架构。
 
 ### 自定义模板
 
