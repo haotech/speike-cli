@@ -97,3 +97,18 @@ question object 是一个`hash`，包含了一些与问题相关的值
 - **choices**: (Array) 值可以是`string`，也可以是`Object`，`Object` 包含`name`，`value`，`short`，`name` 是显示在终端列表中的名字，`value`是保存在`hash`中的值， `short`是选择后显示的值。
 
 更多信息请查看 [Inquirer.js](https://github.com/SBoudrias/Inquirer.js/) 中的详细说明~
+
+#### skipCompile
+
+metadata 文件中的 `skipCompile` 字段可以是 `Array` 也可以是 `String`，值为 [minimatch](https://github.com/isaacs/minimatch) 的匹配规则，例如：
+
+```json
+{
+  "skipCompile": [
+    "src/**/*.vue"
+  ]
+}
+
+被匹配到的文件会跳过 **模板编译**这一步。
+
+所以被跳过的文件并不会读取到 `prompts` 中的值。
