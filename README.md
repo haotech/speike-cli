@@ -29,7 +29,7 @@ $ speike init speike-template-thinkjs hao-project
 
 ### 推荐模板
 
-speike 提供了一些常用的，并且比较推荐的模板，这些模板目前在 [haotech](https://github.com/haotech) 组织下，全部以 `haotech-template` 开头命名，所有推荐模板均可以用 `speike init <template-name> <project-name>` 这行命令使用并生成项目，你也可以使用 `speike list` 命令来查看当前有哪些可用的模板。
+speike 提供了一些常用的，并且比较推荐的模板，这些模板目前在 [haotech](https://github.com/haotech) 组织下，全部以 `speike-template` 开头命名，所有推荐模板均可以用 `speike init <template-name> <project-name>` 这行命令使用并生成项目，你也可以使用 `speike list` 命令来查看当前有哪些可用的模板。
 
 推荐模板：
 
