@@ -91,6 +91,6 @@ test.cb('local template generate project content be equal to answers', t => {
 })
 
 test.after(t => {
-  utils.rmdir(cacheTemplatePath)
+  return utils.rmdir(cacheTemplatePath)
     .then(() => utils.rmdir(path.join(__dirname, targetDir)))
 })
