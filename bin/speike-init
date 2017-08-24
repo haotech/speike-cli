@@ -30,6 +30,9 @@ program.on('--help', function () {
   console.log(chalk.gray('    # create a new project straight from a github template'))
   console.log('    $ speike init username/repo my-project')
   console.log()
+  console.log(chalk.gray('    # create a new project straight from a local template'))
+  console.log('    $ speike init ~/fs/path/to-custom-template my-project')
+  console.log()
 })
 
 if (program.args.length < 1) return program.help()

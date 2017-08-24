@@ -5,7 +5,9 @@ const fs = require('fs')
 const SpeikeInit = require('../lib/init.js')
 const utils = require('../lib/utils.js')
 const cacheTemplatePath = path.join(__dirname, '.speike-templates')
-const targetPath = path.join(__dirname, 'speike-cli-unit-test')
+const targetDir = 'tmp'
+const targetName = 'speike-cli-unit-test'
+const localTargetName = 'speike-cli-unit-test-local'
 
 const answers = {
   name: 'speike-cli-test',
@@ -25,9 +27,10 @@ test.before(() => {
 })
 
 test.cb('should generation speike-cli-unit-test project', t => {
+  const targetPath = path.join(__dirname, targetDir, targetName)
   const init = new SpeikeInit({
     template: 'speike-template-haotech',
-    name: 'speike-cli-unit-test',
+    name: targetName,
     cacheTemplatePath,
     targetPath,
     clone: false
@@ -45,7 +48,39 @@ test.cb('should generation speike-cli-unit-test project', t => {
 })
 
 test.cb('project content be equal to answers', t => {
-  fs.readFile(path.join(targetPath, 'package.json'), 'utf8', (err, data) => {
+  const targetPath = path.join(__dirname, targetDir, targetName)
+  fs.readFile(path.join(targetPath, 'Server', 'package.json'), 'utf8', (err, data) => {
+    if (err) throw err
+    const json = JSON.parse(data)
+    t.is(json.name, answers.name)
+    t.is(json.description, answers.description)
+    t.is(json.author, answers.author)
+    t.end()
+  })
+})
+
+test.cb('should generate from a local template', t => {
+  const targetPath = path.join(__dirname, targetDir, localTargetName)
+  const init = new SpeikeInit({
+    template: path.join(__dirname, './test-template'),
+    targetPath,
+    name: localTargetName
+  })
+
+  init.run()
+
+  const timer = setInterval(() => {
+    if (utils.isExist(targetPath)) {
+      clearInterval(timer)
+      t.pass()
+      t.end()
+    }
+  }, 1000)
+})
+
+test.cb('local template generate project content be equal to answers', t => {
+  const targetPath = path.join(__dirname, targetDir, localTargetName)
+  fs.readFile(path.join(targetPath, 'index.js'), 'utf8', (err, data) => {
     if (err) throw err
     const json = JSON.parse(data)
     t.is(json.name, answers.name)
@@ -57,5 +92,5 @@ test.cb('project content be equal to answers', t => {
 
 test.after(t => {
   utils.rmdir(cacheTemplatePath)
-    .then(() => utils.rmdir(targetPath))
+    .then(() => utils.rmdir(path.join(__dirname, targetDir)))
 })
